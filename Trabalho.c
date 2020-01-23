@@ -1,8 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+void ListarDisciplina(FILE *arquivo){
+	char nome[30];
+	while(fscanf(arquivo, "%s", nome) != EOF){
+		printf("%s\n", nome);
+	}
+	fclose(arquivo);
+}
+
 int main(){
 	int opcao;
+	FILE *arqNome;
+	if ((arqNome = fopen("Nome.txt","rt")) == NULL){
+		printf("Nao foi possivel abrir o arquivo.\n");
+		return 0;
+	}
 	printf("Ola professor,\nX alunos nao estao matriculados.\nO que deseja fazer:\n");
 	printf("1 Listar disciplinas\n");
 	printf("2 Adicionar disciplina\n");
@@ -16,5 +29,8 @@ int main(){
 	printf("10 Sair\n");
 	printf("Digite a opcao: ");
 	scanf("%d", &opcao);
+	if (opcao == 1){
+		ListarDisciplina(arqNome);
+	}
 	return 0;
 }
