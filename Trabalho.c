@@ -5,7 +5,6 @@ typedef struct _disciplina{
 	char disciplina[3];
 	int N_alunos;
 } Disciplina;
-
 Disciplina* CriarLista (){
 	Disciplina* disciplinas = (Disciplina*)malloc(sizeof(Disciplina));
 	if (disciplinas == NULL){
